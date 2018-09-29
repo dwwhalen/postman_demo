@@ -6,7 +6,7 @@
 	},
 	"item": [
 		{
-			"name": "Get some cities",
+			"name": "Get some cities with partial zip",
 			"event": [
 				{
 					"listen": "prerequest",
@@ -22,7 +22,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "95464f8e-2c28-4998-914e-ac4d9395c340",
+						"id": "747f1c5c-0cc7-4169-b4c9-61a02a6e0242",
 						"type": "text/javascript",
 						"exec": [
 							"var jsonData = pm.response.json();",
@@ -35,7 +35,7 @@
 							"    pm.expect(jsonData.geonames.length.toString()).to.equal(pm.globals.get(\"max_rows\"));",
 							"});",
 							"",
-							"pm.test(\"Return row count is 10 \", function () {",
+							"pm.test(\"Return row count is alwasys 10 \", function () {",
 							"    pm.expect(jsonData.geonames.length.toString()).to.equal(10);",
 							"});"
 						]
@@ -187,6 +187,89 @@
 					]
 				},
 				"description": "Generated from a curl request: \ncurl 'https://ba-ws.geonames.net/searchJSON?country=us&country=ca&username=greatclips&callback=jQuery214019614366708870756_1535770076216&featureClass=P&maxRows=5&name_startsWith=430&_=1535770076221' -H 'Referer: https://www.greatclips.com/' -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36' --compressed"
+			},
+			"response": []
+		},
+		{
+			"name": "invalid max rows",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "cf666bfc-59bc-4b49-b46e-6beeca81b1fd",
+						"type": "text/javascript",
+						"exec": [
+							"pm.globals.set(\"search_zip\", \"43016\");",
+							"pm.globals.set(\"max_rows\", \"5\");"
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "3bdc5fc0-c486-47b0-843a-e06978d5b9fd",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Message returned: number of rows requested must be >=1\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"number of rows requested must be >=1\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Referer",
+						"value": "https://www.greatclips.com/"
+					},
+					{
+						"key": "User-Agent",
+						"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "https://{{url}}/searchJSON?country=us&country=ca&username=greatclips&featureClass=P&maxRows=0&name_startsWith={{search_zip}}&_=1535770076221",
+					"protocol": "https",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"searchJSON"
+					],
+					"query": [
+						{
+							"key": "country",
+							"value": "us"
+						},
+						{
+							"key": "country",
+							"value": "ca"
+						},
+						{
+							"key": "username",
+							"value": "greatclips"
+						},
+						{
+							"key": "featureClass",
+							"value": "P"
+						},
+						{
+							"key": "maxRows",
+							"value": "0"
+						},
+						{
+							"key": "name_startsWith",
+							"value": "{{search_zip}}"
+						},
+						{
+							"key": "_",
+							"value": "1535770076221"
+						}
+					]
+				}
 			},
 			"response": []
 		}
