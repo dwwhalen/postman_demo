@@ -22,7 +22,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "926f55b6-aefc-4dfb-95c1-0ff79fb15689",
+						"id": "95464f8e-2c28-4998-914e-ac4d9395c340",
 						"type": "text/javascript",
 						"exec": [
 							"var jsonData = pm.response.json();",
@@ -32,7 +32,11 @@
 							"});",
 							"",
 							"pm.test(\"Return row count matches requested \", function () {",
-							"    pm.expect(jsonData.geonames.length.toString()).to.eql(pm.globals.get(\"max_rows\"));",
+							"    pm.expect(jsonData.geonames.length.toString()).to.equal(pm.globals.get(\"max_rows\"));",
+							"});",
+							"",
+							"pm.test(\"Return row count is 10 \", function () {",
+							"    pm.expect(jsonData.geonames.length.toString()).to.equal(10);",
 							"});"
 						]
 					}
