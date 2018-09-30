@@ -22,7 +22,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "747f1c5c-0cc7-4169-b4c9-61a02a6e0242",
+						"id": "f58f0faa-99b3-43f9-8988-8a5cc5c8edeb",
 						"type": "text/javascript",
 						"exec": [
 							"var jsonData = pm.response.json();",
@@ -35,7 +35,7 @@
 							"    pm.expect(jsonData.geonames.length.toString()).to.equal(pm.globals.get(\"max_rows\"));",
 							"});",
 							"",
-							"pm.test(\"Return row count is alwasys 10 \", function () {",
+							"pm.test(\"Return row count is always 10 \", function () {",
 							"    pm.expect(jsonData.geonames.length.toString()).to.equal(10);",
 							"});"
 						]
@@ -196,11 +196,11 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "cf666bfc-59bc-4b49-b46e-6beeca81b1fd",
+						"id": "4062a09b-7373-4fe9-bd66-9534d282faa9",
 						"type": "text/javascript",
 						"exec": [
 							"pm.globals.set(\"search_zip\", \"43016\");",
-							"pm.globals.set(\"max_rows\", \"5\");"
+							"pm.globals.set(\"max_rows\", \"-1\");"
 						]
 					}
 				},
@@ -231,7 +231,7 @@
 				],
 				"body": {},
 				"url": {
-					"raw": "https://{{url}}/searchJSON?country=us&country=ca&username=greatclips&featureClass=P&maxRows=0&name_startsWith={{search_zip}}&_=1535770076221",
+					"raw": "https://{{url}}/searchJSON?country=us&country=ca&username=greatclips&featureClass=P&maxRows={{max_rows}}&name_startsWith={{search_zip}}&_=1535770076221",
 					"protocol": "https",
 					"host": [
 						"{{url}}"
@@ -258,7 +258,7 @@
 						},
 						{
 							"key": "maxRows",
-							"value": "0"
+							"value": "{{max_rows}}"
 						},
 						{
 							"key": "name_startsWith",

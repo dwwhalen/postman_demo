@@ -5,11 +5,11 @@
     {
       "key": "url",
       "value": "ba-ws.geonames.net",
-      "type": "text",
+      "description": "",
       "enabled": true
     }
   ],
   "_postman_variable_scope": "environment",
-  "_postman_exported_at": "2018-09-27T01:35:18.271Z",
+  "_postman_exported_at": "2018-09-30T00:44:52.020Z",
   "_postman_exported_using": "Postman/6.3.0"
 }
