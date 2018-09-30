@@ -22,7 +22,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "f58f0faa-99b3-43f9-8988-8a5cc5c8edeb",
+						"id": "4352dacb-e16e-4b1e-b1bb-f6fc98c14f0e",
 						"type": "text/javascript",
 						"exec": [
 							"var jsonData = pm.response.json();",
@@ -35,8 +35,8 @@
 							"    pm.expect(jsonData.geonames.length.toString()).to.equal(pm.globals.get(\"max_rows\"));",
 							"});",
 							"",
-							"pm.test(\"Return row count is always 10 \", function () {",
-							"    pm.expect(jsonData.geonames.length.toString()).to.equal(10);",
+							"pm.test(\"Response time is less than 500ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);",
 							"});"
 						]
 					}
