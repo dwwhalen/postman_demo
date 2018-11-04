@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "4ddae3f1-a8c4-4fa4-b66c-1ad40aa77c19",
+		"_postman_id": "508e8e54-a0e9-47c3-89ab-3210f07e03e5",
 		"name": "GreatClipsPrepped",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -54,7 +54,10 @@
 						"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36"
 					}
 				],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
 					"raw": "https://{{url}}/searchJSON?country=us&country=ca&username=greatclips&featureClass=P&maxRows={{max_rows}}&name_startsWith={{search_zip}}&_=1535770076221",
 					"protocol": "https",
@@ -145,7 +148,10 @@
 						"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36"
 					}
 				],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
 					"raw": "https://{{url}}/searchJSON?country=us&country=ca&username=greatclips&featureClass=P&maxRows={{max_rows}}&name_startsWith={{search_zip}}&_=1535770076221",
 					"protocol": "https",
@@ -229,7 +235,10 @@
 						"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36"
 					}
 				],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
 					"raw": "https://{{url}}/searchJSON?country=us&country=ca&username=greatclips&featureClass=P&maxRows={{max_rows}}&name_startsWith={{search_zip}}&_=1535770076221",
 					"protocol": "https",
@@ -268,6 +277,86 @@
 							"key": "_",
 							"value": "1535770076221"
 						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetDetailsForCity",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d1768fab-c268-4aef-a75c-5ef3543cc033",
+						"exec": [
+							"pm.test(\"response must be valid\", function () {",
+							"     pm.response.to.be.ok;",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": "_gcl_au=1.1.1017766286.1538255858; _ga=GA1.2.1838857322.1538255858; _cb_ls=1; _cb=D5BKfK2i7jDCOt5xQ; SC_ANALYTICS_GLOBAL_COOKIE=ed5f9d72d7584b28972237764bb356d1|False; __atssc=google%3B3; _gid=GA1.2.213093380.1541126510; GeoIPCountryCookie=US; BIGipServer~GCI250-CFW01~LB-GCI-WW2-GREATCLIPS-COM_HTTPS=rd15o00000000000000000000ffff0a55773ao8080; ASP.NET_SessionId=wwdwrmv4p4f3bezln3pk3aer; _cb_svref=null; _fbp=fb.1.1541210710798.1918879880; __atuvc=3%7C40%2C0%7C41%2C0%7C42%2C1%7C43%2C4%7C44; __atuvs=5bdd022f50a9ab2e001; _dc_gtm_UA-3001199-4=1; _chartbeat2=.1538255862858.1541210847614.0000001000000011.i7QWbB2AKfIBlaKMJBTJjkQCcSLze.2; _gat_UA-3001199-4=1; _gali=ui-id-8"
+					},
+					{
+						"key": "Origin",
+						"value": "https://www.greatclips.com"
+					},
+					{
+						"key": "Accept-Encoding",
+						"value": "gzip, deflate, br"
+					},
+					{
+						"key": "Accept-Language",
+						"value": "en-US,en;q=0.9"
+					},
+					{
+						"key": "User-Agent",
+						"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded; charset=UTF-8"
+					},
+					{
+						"key": "Accept",
+						"value": "*/*"
+					},
+					{
+						"key": "Referer",
+						"value": "https://www.greatclips.com/"
+					},
+					{
+						"key": "X-Requested-With",
+						"value": "XMLHttpRequest"
+					},
+					{
+						"key": "Connection",
+						"value": "keep-alive"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "term=Dublin%2C+Ohio"
+				},
+				"url": {
+					"raw": "https://www.greatclips.com/Component/TermSearchSubmit",
+					"protocol": "https",
+					"host": [
+						"www",
+						"greatclips",
+						"com"
+					],
+					"path": [
+						"Component",
+						"TermSearchSubmit"
 					]
 				}
 			},
